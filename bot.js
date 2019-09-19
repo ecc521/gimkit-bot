@@ -1,7 +1,9 @@
 //How to use this code:
 //Copy and paste this code into the developer console.
 //Type startAnswering() to start the bot (WARNING: Must be on the page that has the question and answer choices)
+//You can also press "s" to start the bot
 //Type stopAnswering() to stop the bot.
+//You can also press "e" to stop the bot.
 //Be warned that the bot will get questions wrong initially. This happens because the bot needs 
 //to guess to figure out the correct answer.
 //The bot will currently not work if the view correct answer setting is off (although it could be improved to work).
@@ -79,3 +81,12 @@ async function startAnswering() {
 		await answerQuestion()
 	}
 }
+
+
+
+//Allow pressing s to start
+window.addEventListener("keyup", function(e) {if (e.key === "s") {startAnswering()}})
+//Allow pressing e to end
+window.addEventListener("keyup", function(e) {if (e.key === "e") {stopAnswering()}})
+
+
