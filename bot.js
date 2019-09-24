@@ -8,6 +8,9 @@
 //to guess to figure out the correct answer.
 //The bot will currently not work if the view correct answer setting is off (although it could be improved to work).
 
+let moneyPerQuestion = [undefined, 10, 100, 1e3, 1e4, 7.5e4, 3e5, 1e6, 1e7, 1e8]
+let streakBonus = [undefined, 15, 1.5e2, 1.5e3, 1.5e4, 115e3, 450e3, 15e5, 15e6, 2e8]
+let multiplier = [undefined, 50, 300, 2e3, 12e3, 85e3, 7e5, 65e5, 65e6, 1e9]
 
 
 //TODO: Handle view correct answer setting being off.
@@ -48,6 +51,9 @@ async function answerQuestion() {
 			//let options = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div")
 			//Indexes 3-12 are purchase options.
 			//let selections = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div > div")
+			//selections[x].dispatchEvent(new Event("mousedown", {bubbles: true, composed: true}))
+			//selections[0].children[2].click() //Buy it.
+			//document.querySelectorAll("body > div > div > div > div > div")[2].click()
 
 			
 			let nextQuestion = document.querySelector("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div:nth-child(2) > span:nth-child(2) > div")
@@ -88,5 +94,3 @@ async function startAnswering() {
 window.addEventListener("keyup", function(e) {if (e.key === "s") {startAnswering()}})
 //Allow pressing e to end
 window.addEventListener("keyup", function(e) {if (e.key === "e") {stopAnswering()}})
-
-
