@@ -17,10 +17,14 @@ let multiplier = [undefined, 50, 300, 2e3, 12e3, 85e3, 7e5, 65e5, 65e6, 1e9]
 let results = {}
 const sleep = m => new Promise(r => setTimeout(r, m))
 
+
+function getMoney() {
+	return Number(document.querySelector("body > div > div").innerText.split("\n")[0].slice(1))
+}
+
 async function answerQuestion() {
 	//Element 0 is the question. 1-4 are the answer choices.
 	let elements = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div")
-	let money = Number(document.querySelector("body > div > div").innerText.split("\n")[0].slice(1))
 
 	let questionName = elements[0].innerText
 	let index = 1
@@ -44,21 +48,63 @@ async function answerQuestion() {
 		//One of shop and viewCorrectAnswer exist
 		if (!lost) {
 			//We got the question correct
-			let shop = document.querySelector("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div:nth-child(2) > span:nth-child(1) > div")
-			//shop.click()
-			//Money per question, streak, multiplier, insurance (not useful).
-			//TODO: Add powerups.
-			//let options = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div")
-			//Indexes 3-12 are purchase options.
-			//let selections = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div > div")
-			//selections[x].dispatchEvent(new Event("mousedown", {bubbles: true, composed: true}))
-			//selections[0].children[2].click() //Buy it.
-			//document.querySelectorAll("body > div > div > div > div > div")[2].click()
-
-			
-			let nextQuestion = document.querySelector("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div:nth-child(2) > span:nth-child(2) > div")
 			results[questionName] = guessing
-			nextQuestion.click()
+
+			let money = getMoney()			
+			
+			let shopIndex; //Money per question, streak, multiplier, insurance (not useful).
+			
+			let moneyIndex = moneyPerQuestion.findIndex((x) => {return money >= x})
+			let streakIndex = streakBonus.findIndex((x) => {return money >= x})
+			let multiplierIndex = multiplier.findIndex((x) => {return money >= x})
+			
+			let purchaseIndex
+			
+			if (moneyIndex !== -1) {
+				shopIndex = 0; 
+				purchaseIndex = moneyIndex; 
+				moneyPerQuestion[moneyIndex] = undefined
+			}
+			else if (streakIndex !== -1) {
+				shopIndex = 1; 
+				purchaseIndex = streakIndex
+				streakBonus[streakIndex] = undefined
+			}
+			else if (multiplierIndex !== -1) {
+				shopIndex = 2; 
+				purchaseIndex = multiplierIndex
+				multiplier[multiplierIndex] = undefined
+			}
+			
+			console.log(shopIndex)
+			console.log(purchaseIndex)
+			console.log(moneyIndex, streakIndex, multiplierIndex)
+			
+			if (shopIndex !== undefined) {
+				let shop = document.querySelector("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div:nth-child(2) > span:nth-child(1) > div")
+				shop.click()
+				//TODO: Add powerups.
+				//This little bit of code does not work yet.
+				
+				await sleep(400)
+				
+				let options = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div")
+				options[shopIndex].click()
+				
+				await sleep(400)
+				
+				//Indexes 3-12 are purchase options.
+				let selections = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div > div")
+				selections[purchaseIndex + 3].dispatchEvent(new Event("mousedown", {bubbles: true, composed: true})) //Select the upgrade
+				await sleep(300)
+				selections[2].click() //Buy it.
+				await sleep(300)
+				document.querySelectorAll("body > div > div > div > div > div")[2].click() //Click to go back to the questions.
+			}
+			else {
+				let nextQuestion = document.querySelector("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div:nth-child(2) > span:nth-child(2) > div")
+				nextQuestion.click()
+			}
 		}
 		else {
 			let viewCorrectAnswer = document.querySelector("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div:nth-child(2) > span:nth-child(1) > div")
