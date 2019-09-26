@@ -19,7 +19,7 @@ const sleep = m => new Promise(r => setTimeout(r, m))
 
 
 function getMoney() {
-	return Number(document.querySelector("body > div > div").innerText.split("\n")[0].slice(1))
+	return Number(document.querySelector("body > div > div").innerText.split(",").join("").split("\n")[0].slice(1))
 }
 
 async function answerQuestion() {
@@ -76,6 +76,7 @@ async function answerQuestion() {
 				multiplier[multiplierIndex] = undefined
 			}
 			
+			console.log(money)
 			console.log(shopIndex)
 			console.log(purchaseIndex)
 			console.log(moneyIndex, streakIndex, multiplierIndex)
