@@ -1,6 +1,8 @@
 # Powerups
 
-Information on powerups, straight from the server...
+Information on powerups, straight from the server itself...
+
+I like creating my own powerups sometimes - just by editting these...
 
 ```js
 [
