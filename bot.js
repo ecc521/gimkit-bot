@@ -84,7 +84,7 @@ async function answerQuestion() {
 
   let lost = document.querySelector("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div").innerText.startsWith("-")
 
-  / /One of shop and viewCorrectAnswer exist
+  // One of shop and viewCorrectAnswer exist
   if (!lost) {
     //We got the question correct
     results[questionName] = guessing
