@@ -2,7 +2,7 @@
 
 Information on powerups, straight from the server itself...
 
-I like creating my own powerups sometimes - just by editting these...
+When you edit them ( if you know how ) you can create your own powerups clientSide
 
 ```js
 [
