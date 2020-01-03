@@ -1,6 +1,6 @@
 # Powerups
 
-Information of powerups, straight from the server...
+Information on powerups, straight from the server...
 
 ```js
 [
@@ -181,3 +181,5 @@ Information of powerups, straight from the server...
   }
 ]
 ```
+
+- Source, FloppyT
