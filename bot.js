@@ -18,31 +18,32 @@ let insurance = [undefined, 10, 250, 1e3, 25e3, 1e5, 1e6 , 5e6, 25e6, 5e7]
 
 const transporter = {}
 transporter.toggleLoc = () => { // If in shop - goes to questions, if in questions goes to shop
-  document.querySelector('div[style="font-weight: 900; cursor: pointer; font-size: 22px;"]').dispatchEvent(new MouseEvent("click", {
-    bubbles: true
-  }))
+  clickElement(document.querySelector('div[style="font-weight: 900; cursor: pointer; font-size: 22px;"]'))
 };
 transporter.toShop = () => {
-  document.querySelectorAll('svg.MuiSvgIcon-root')[0].dispatchEvent(new MouseEvent("click", {
-    bubbles: true
-  }))
-  document.querySelectorAll('nav.MuiList-root.MuiList-padding svg.MuiSvgIcon-root')[1].dispatchEvent(new MouseEvent("click", {
-    bubbles: true
-  }))
+  clickElement(document.querySelectorAll('svg.MuiSvgIcon-root')[0])
+  clickElement(document.querySelectorAll('nav.MuiList-root.MuiList-padding svg.MuiSvgIcon-root')[1])
 };
 transporter.toQuestion = () => {
-  document.querySelectorAll('svg.MuiSvgIcon-root')[0].dispatchEvent(new MouseEvent("click", {
-    bubbles: true
-  }))
-  document.querySelectorAll('nav.MuiList-root.MuiList-padding svg.MuiSvgIcon-root')[0].dispatchEvent(new MouseEvent("click", {
-    bubbles: true
-  }))
+  clickElement(document.querySelectorAll('svg.MuiSvgIcon-root')[0])
+  clickElement(document.querySelectorAll('nav.MuiList-root.MuiList-padding svg.MuiSvgIcon-root')[0])
 };
-transporter.simpleClick = (elem) => {
-  elem.dispatchEvent(new MouseEvent("click", {
-    bubbles: true
-  }))
-};
+function clickElement(elem) {
+	
+	//Mobile event dispatch order
+	let events = ["touchstart", "touchend", "mouseover", "mousemove", "mousedown", "mouseup", "click"]
+	
+	events.forEach((event) => {
+		if (event.includes("touch")) {
+			elem.dispatchEvent(new TouchEvent(event, {bubbles: true}))
+		}
+		else if (event.includes("mouse") || event === "click") {
+			elem.dispatchEvent(new MouseEvent(event, {bubbles: true}))
+		}
+	})
+}
+
+transporter.simpleClick = clickElement
 
 
 //TODO: Handle view correct answer setting being off.
@@ -72,7 +73,7 @@ async function answerQuestion() {
     }
   }
   let guessing = elements[index].innerText
-  transporter.simpleClick(elements[index]) // Updated - Floppian
+  transporter.simpleClick(elements[index])
 
   await sleep(450)
 
@@ -126,15 +127,13 @@ async function answerQuestion() {
       await sleep(400)
 
       let options = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div")
-      simplyClick(options[shopIndex]) // Having some issues with this - Floppian
+      simplyClick(options[shopIndex])
 
       await sleep(400)
 
       //Indexes 3-12 are purchase options.
       let selections = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div > div")
-      selections[purchaseIndex + 3].dispatchEvent(new Event("mousedown", {
-        bubbles: true,
-      })) // Original attempts I see... for some reason none of these "shop selections work" just checking why - will be fixed
+      clickElement(selections[purchaseIndex + 3]) // Original attempts I see... for some reason none of these "shop selections work" just checking why - will be fixed
       //Select the upgrade
       await sleep(300)
       selections[2].click() //Buy it.
