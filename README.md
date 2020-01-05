@@ -6,4 +6,5 @@ Takes about 2 minutes to max out all upgrades, minus time wasted guessing at ans
 
 Ready to get rich? Follow the instructions at https://ecc521.github.io/gimkit-bot/bot.js
 
+After waiting a few minutes...
 ![too rich.png](https://ecc521.github.io/gimkit-bot/too%20rich.png "I'm way too rich")
