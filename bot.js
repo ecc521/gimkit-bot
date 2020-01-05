@@ -73,7 +73,7 @@ async function answerQuestion() {
     }
   }
   let guessing = elements[index].innerText
-  transporter.simpleClick(elements[index])
+  getEventListeners(document).click[0].listener({isTrusted: true, target: elements[index], type: "click"})
 
   await sleep(450)
 
@@ -120,13 +120,14 @@ async function answerQuestion() {
     console.log(moneyIndex, streakIndex, multiplierIndex)
 
     if (shopIndex !== undefined) {
-      transporter.toShop() // Should Work
+      transporter.toShop()
       //TODO: Add powerups.
       //This little bit of code does not work yet.
 
       await sleep(400)
 
       let options = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div")
+      console.log(options)
       simplyClick(options[shopIndex])
 
       await sleep(400)
