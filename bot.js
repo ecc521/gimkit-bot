@@ -1,5 +1,3 @@
-window.getEventListeners = getEventListeners //For some reason, getEventListeners is not available unless we do this. 
-
 //How to use this code:
 //Copy and paste this code into the developer console.
 //Type startAnswering() to start the bot (WARNING: Must be on the page that has the question and answer choices)
@@ -9,6 +7,8 @@ window.getEventListeners = getEventListeners //For some reason, getEventListener
 //Be warned that the bot will get questions wrong initially. This happens because the bot needs 
 //to guess to figure out the correct answer.
 //The bot will currently not work if the view correct answer setting is off (although it could be improved to work).
+
+window.getEventListeners = getEventListeners //For some reason, getEventListeners is not available unless we do this. 
 
 //TODO: Dynamically figure out prices, in case they change. 
 let moneyPerQuestion = [undefined, 10, 100, 1e3, 1e4, 7.5e4, 3e5, 1e6, 1e7, 1e8]
