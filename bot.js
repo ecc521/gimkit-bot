@@ -1,12 +1,10 @@
-//How to use this code:
-//Copy and paste this code into the developer console.
-//Type startAnswering() to start the bot (WARNING: Must be on the page that has the question and answer choices)
-//You can also press "s" to start the bot
-//Type stopAnswering() to stop the bot.
-//You can also press "e" to stop the bot.
+//Copy and paste this code into the developer console. Close the console. 
+//Press "s" to start the bot
+//Press "e" to stop the bot.
+
 //Be warned that the bot will get questions wrong initially. This happens because the bot needs 
 //to guess to figure out the correct answer.
-//The bot will currently not work if the view correct answer setting is off (although it could be improved to work).
+//The bot will currently not work if the view correct answer setting is off. Improvements that handle this are welcomed. 
 
 window.getEventListeners = getEventListeners //For some reason, getEventListeners is not available unless we do this. 
 
@@ -57,6 +55,7 @@ function getMoney() {
 }
 
 async function answerQuestion() {
+	transporter.toQuestion()
   //Element 0 is the question. 1-4 are the answer choices.
 	let elements = document.querySelectorAll("span.notranslate.lang-en")
 
