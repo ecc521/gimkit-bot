@@ -1,3 +1,5 @@
+window.getEventListeners = getEventListeners //For some reason, getEventListeners is not available unless we do this. 
+
 //How to use this code:
 //Copy and paste this code into the developer console.
 //Type startAnswering() to start the bot (WARNING: Must be on the page that has the question and answer choices)
