@@ -56,8 +56,6 @@ function getMoney() {
 
 async function answerQuestion() {
   //Element 0 is the question. 1-4 are the answer choices.
-	// This is wrong and will change every update, I simplified - Floppian
-	// let elements = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div")
 	let elements = document.querySelectorAll("span.notranslate.lang-en")
 
   let questionName = elements[0].innerText
@@ -157,7 +155,6 @@ transporter.simpleClick(viewCorrectAnswer)
   await sleep(400)
 
 }
-//let oldlog = console.log;window.console.log = function(...data) {oldlog(...data);window.last = data}
 
 let answering = false
 
