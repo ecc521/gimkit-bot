@@ -74,7 +74,9 @@ async function answerQuestion() {
   }
   let guessing = elements[index].innerText
   getEventListeners(document).click[0].listener({isTrusted: true, target: elements[index], type: "click"})
-
+  console.log(elements)
+  console.log(index)
+	
   await sleep(450)
 
   let lost = document.querySelector("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div").innerText.startsWith("-")
