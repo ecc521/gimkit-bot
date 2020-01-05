@@ -128,7 +128,7 @@ async function answerQuestion() {
 
       let options = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div")
       console.log(options)
-      simplyClick(options[shopIndex])
+      transporter.simpleClick(options[shopIndex])
 
       await sleep(400)
 
@@ -137,7 +137,7 @@ async function answerQuestion() {
       clickElement(selections[purchaseIndex + 3]) // Original attempts I see... for some reason none of these "shop selections work" just checking why - will be fixed
       //Select the upgrade
       await sleep(300)
-      selections[2].click() //Buy it.
+      transporter.simpleClick(selections[2]) //Buy it.
       await sleep(300)
       document.querySelectorAll("body > div > div > div > div > div")[2].click() //Click to go back to the questions.
     } else {
