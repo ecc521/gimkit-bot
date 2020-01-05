@@ -12,6 +12,19 @@
 //to guess to figure out the correct answer.
 //The bot will currently not work if the view correct answer setting is off. Improvements that handle this are welcomed. 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 window.getEventListeners = getEventListeners //For some reason, getEventListeners is not available unless we do this. 
 
 //TODO: Dynamically figure out prices, in case they change. 
