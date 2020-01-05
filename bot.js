@@ -1,7 +1,12 @@
 //Copy and paste this code into the developer console. Close the console. 
 //Press "s" to start the bot
 //Press "e" to stop the bot.
-//The bot can not purchase powerups. You will want to purchase the snowstorm powerup (if available) once the bot gets a couple billion dollars. 
+
+//The bot can not purchase powerups. You will want to purchase the snowstorm powerup (if available) 
+//once the bot gets a couple billion dollars. You may also want to purchase deflector, sheild, or other powerups
+//that protect you against other players. 
+
+//Please note that some themes may break the bot when applied. 
 
 //Be warned that the bot will get questions wrong initially. This happens because the bot needs 
 //to guess to figure out the correct answer.
