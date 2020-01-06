@@ -82,6 +82,11 @@ async function waitForElement(callback, ...params) {
 	throw "Element did not appear within two seconds. Param " + params
 }
 
+
+let querySelector = document.querySelector.bind( document );
+let querySelectorAll = document.querySelectorAll.bind( document );
+
+
 transporter.simpleClick = clickElement
 
 function getMoney() {
@@ -112,7 +117,7 @@ async function answerQuestion() {
 	
 	//await sleep(450)
   //let lost = document.querySelector("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div").innerText.startsWith("-")
-  let moneyChange = await waitForElement(document.querySelector, "body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div")
+  let moneyChange = await waitForElement(querySelector, "body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div")
 	let lost = moneyChange.innerText.startsWith("-")
   
   // One of shop and viewCorrectAnswer exist
@@ -163,7 +168,7 @@ async function answerQuestion() {
       //await sleep(400)
 
       //let options = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div")
-	    let options = await waitForElement(document.querySelectorAll, "body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div")
+	    let options = await waitForElement(querySelectorAll, "body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div")
       console.log(options)
       transporter.simpleClick(options[shopIndex])
 
