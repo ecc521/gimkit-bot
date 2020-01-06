@@ -178,7 +178,7 @@ console.log(moneyChange)
 
       //Indexes 3-12 are purchase options.
       //let selections = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div > div")
-	    let selections;
+	    let selections = [];
 	    let tries = 0
 	    while (selections.length < 13) {
 	    	selections = await waitForElement(querySelectorAll, "body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div > div")
