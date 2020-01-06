@@ -76,7 +76,7 @@ async function waitForElement(callback, ...params) {
 	let elems;
 	for (let i=0;i<100;i++) {
 		elems = callback(...params)
-		if (!(elems == null || elems.length === 0)) {return elems}
+		if (!(elems == null || elems.length === 0)) {console.log(elems); return elems}
 		await sleep(20)
 	}
 	throw "Element did not appear within two seconds. Param " + params
@@ -118,7 +118,8 @@ async function answerQuestion() {
 	//await sleep(450)
   //let lost = document.querySelector("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div").innerText.startsWith("-")
   let moneyChange = await waitForElement(querySelector, "body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div")
-	let lost = moneyChange.innerText.startsWith("-")
+console.log(moneyChange)	
+  let lost = moneyChange.innerText.startsWith("-")
   
   // One of shop and viewCorrectAnswer exist
   if (!lost) {
