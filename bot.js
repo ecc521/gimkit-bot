@@ -173,15 +173,17 @@ console.log(moneyChange)
       console.log(options)
       transporter.simpleClick(options[shopIndex])
 
-      await sleep(400)
+      //await sleep(400)
 
       //Indexes 3-12 are purchase options.
-      let selections = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div > div")
+      //let selections = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div > div")
+	    let selections = await waitForElement(querySelectorAll, "body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div > div")
+	    console.log(selections)
       clickElement(selections[purchaseIndex + 3]) // Original attempts I see... for some reason none of these "shop selections work" just checking why - will be fixed
       //Select the upgrade
-      await sleep(300)
+      await sleep(200)
       transporter.simpleClick(selections[2]) //Buy it.
-      await sleep(300)
+      await sleep(200)
 	    transporter.toQuestion()
       //document.querySelectorAll("body > div > div > div > div > div")[2].click() //Click to go back to the questions.
     } else {
