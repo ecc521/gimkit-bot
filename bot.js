@@ -187,8 +187,9 @@ console.log(moneyChange)
 	    transporter.toQuestion()
       //document.querySelectorAll("body > div > div > div > div > div")[2].click() //Click to go back to the questions.
     } else {
-      let nextQuestion = document.querySelector("#root > div > div.sc-lkqHmb.fDovdT > div:nth-child(1) > div > div > div.sc-bxivhb.guENId > span:nth-child(2) > div > div > div > div")
-      transporter.simpleClick(nextQuestion)
+      //let nextQuestion = document.querySelector("#root > div > div.sc-lkqHmb.fDovdT > div:nth-child(1) > div > div > div.sc-bxivhb.guENId > span:nth-child(2) > div > div > div > div")
+      //transporter.simpleClick(nextQuestion)
+	    transporter.toQuestion()
     }
   } else {
     let viewCorrectAnswer = document.querySelector("#root > div > div.sc-lkqHmb.fDovdT > div:nth-child(1) > div > div > div.sc-VigVT.inslDi > div > div > div > div") // Actually - I changedd this to the text, but it works better - Floppian
