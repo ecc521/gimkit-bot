@@ -35,6 +35,11 @@ let multiplier = [undefined, 50, 300, 2e3, 12e3, 85e3, 7e5, 65e5, 65e6, 1e9]
 //Insurance is currently ignored. 
 let insurance = [undefined, 10, 250, 1e3, 25e3, 1e5, 1e6 , 5e6, 25e6, 5e7]
 
+
+//TODO: Handle view correct answer setting being off.
+let results = {}
+const sleep = m => new Promise(r => setTimeout(r, m))
+
 const transporter = {}
 transporter.toggleLoc = () => { // If in shop - goes to questions, if in questions goes to shop
   clickElement(document.querySelector('div[style="font-weight: 900; cursor: pointer; font-size: 22px;"]'))
@@ -62,12 +67,21 @@ function clickElement(elem) {
 	})
 }
 
+async function waitForElement(callback, ...params) {
+	//Waits for an element to appear, then returns it. 
+	//Max 2 seconds
+	//This should be used to avoid sleep() calls
+	
+	let elems;
+	for (let i=0;i<100;i++) {
+		elems = callback(...params)
+		if (!(elems == null || elems.length === 0)) {return elems}
+		await sleep(20)
+	}
+	throw "Element did not appear within two seconds. Param " + params
+}
+
 transporter.simpleClick = clickElement
-
-
-//TODO: Handle view correct answer setting being off.
-let results = {}
-const sleep = m => new Promise(r => setTimeout(r, m))
 
 function getMoney() {
   return Number(document.querySelector("body > div > div").innerText.split(",").join("").split("\n")[0].slice(1))
@@ -159,10 +173,11 @@ async function answerQuestion() {
       await sleep(300)
       transporter.simpleClick(selections[2]) //Buy it.
       await sleep(300)
-      document.querySelectorAll("body > div > div > div > div > div")[2].click() //Click to go back to the questions.
+	    transporter.toQuestion()
+      //document.querySelectorAll("body > div > div > div > div > div")[2].click() //Click to go back to the questions.
     } else {
       let nextQuestion = document.querySelector("#root > div > div.sc-lkqHmb.fDovdT > div:nth-child(1) > div > div > div.sc-bxivhb.guENId > span:nth-child(2) > div > div > div > div")
-      transporter.simpleClick(nextQuestion) // Updated - Floppian
+      transporter.simpleClick(nextQuestion)
     }
   } else {
     let viewCorrectAnswer = document.querySelector("#root > div > div.sc-lkqHmb.fDovdT > div:nth-child(1) > div > div > div.sc-VigVT.inslDi > div > div > div > div") // Actually - I changedd this to the text, but it works better - Floppian
@@ -183,10 +198,19 @@ function stopAnswering() {
 }
 
 async function startAnswering() {
-  answering = true
-  while (answering === true) {
-    await answerQuestion()
-  }
+	try {
+	  answering = true
+	  while (answering === true) {
+	    console.time("answer question")
+	    await answerQuestion()
+	    console.timeEnd("answer question")
+	  }
+	}
+	catch (e) {
+		console.error(e)
+		alert("Bot errored " + e)
+		answering = false
+	}
 }
 
 
