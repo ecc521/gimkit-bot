@@ -68,18 +68,18 @@ function clickElement(elem) {
 	})
 }
 
-async function waitForElement(callback, ...params) {
+async function waitForElement(callback, param, minElemCount = 0) {
 	//Waits for an element to appear, then returns it. 
 	//Max 2 seconds
 	//This should be used to avoid sleep() calls
 	
 	let elems;
 	for (let i=0;i<100;i++) {
-		elems = callback(...params)
-		if (!(elems == null || elems.length === 0)) {console.log(elems); return elems}
+		elems = callback(param)
+		if (!(elems == null || elems.length < minElemCount)) {console.log(elems); return elems}
 		await sleep(20)
 	}
-	throw "Element did not appear within two seconds. Param " + params
+	throw "Element did not appear within two seconds. Param " + param
 }
 
 
@@ -167,10 +167,10 @@ console.log(moneyChange)
       //TODO: Add powerups.
       //This little bit of code does not work yet.
 
-      //await sleep(400)
+      await sleep(400)
 
       //let options = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div")
-	    let options = await waitForElement(querySelectorAll, "body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div")
+	    let options = await waitForElement(querySelectorAll, "body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div", 4)
       console.log(options)
       transporter.simpleClick(options[shopIndex])
 
@@ -178,13 +178,7 @@ console.log(moneyChange)
 
       //Indexes 3-12 are purchase options.
       //let selections = document.querySelectorAll("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div > div")
-	    let selections = [];
-	    let tries = 0
-	    while (selections.length < 13) {
-	    	selections = await waitForElement(querySelectorAll, "body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div > div")
-	    	tries++
-		    if (tries > 100) {throw "Couldn't get purchase selections. "}
-	    }
+	    let selections = await waitForElement(querySelectorAll, "body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div > div", 13)
 	    console.log(selections)
       clickElement(selections[purchaseIndex + 3]) // Original attempts I see... for some reason none of these "shop selections work" just checking why - will be fixed
       //Select the upgrade
