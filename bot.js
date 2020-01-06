@@ -96,7 +96,8 @@ function getMoney() {
 async function answerQuestion() {
 	transporter.toQuestion()
   //Element 0 is the question. 1-4 are the answer choices.
-	let elements = document.querySelectorAll("span.notranslate.lang-en")
+	//let elements = document.querySelectorAll("span.notranslate.lang-en")
+let elements = await waitForElement(querySelectorAll, "span.notranslate.lang-en")
 
   let questionName = elements[0].innerText
   let index = 1
