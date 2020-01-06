@@ -219,9 +219,9 @@ async function startAnswering() {
 	  }
 	}
 	catch (e) {
-		console.error(e)
-		alert("Bot errored " + e)
 		answering = false
+		alert("Bot errored " + e)
+		throw e
 	}
 }
 
