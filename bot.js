@@ -52,6 +52,7 @@ function clickElement(elem) {
 	//Mobile event dispatch order
 	let events = ["touchstart", "touchend", "mouseover", "mousemove", "mousedown", "mouseup", "click"]
 	
+	console.log(elem)
 	events.forEach((event) => {
 		if (event.includes("touch")) {
 			elem.dispatchEvent(new TouchEvent(event, {bubbles: true}))
@@ -159,18 +160,21 @@ async function answerQuestion() {
       await sleep(300)
       transporter.simpleClick(selections[2]) //Buy it.
       await sleep(300)
-      document.querySelectorAll("body > div > div > div > div > div")[2].click() //Click to go back to the questions.
+      //document.querySelectorAll("body > div > div > div > div > div")[2].click() //Click to go back to the questions.
+	    transporter.toQuestion()
     } else {
-      let nextQuestion = document.querySelector("#root > div > div.sc-lkqHmb.fDovdT > div:nth-child(1) > div > div > div.sc-bxivhb.guENId > span:nth-child(2) > div > div > div > div")
-      transporter.simpleClick(nextQuestion) // Updated - Floppian
+      //let nextQuestion = document.querySelector("#root > div > div.sc-lkqHmb.fDovdT > div:nth-child(1) > div > div > div.sc-bxivhb.guENId > span:nth-child(2) > div > div > div > div")
+      //transporter.simpleClick(nextQuestion)
+	    transporter.toQuestion()
     }
   } else {
-    let viewCorrectAnswer = document.querySelector("#root > div > div.sc-lkqHmb.fDovdT > div:nth-child(1) > div > div > div.sc-VigVT.inslDi > div > div > div > div") // Actually - I changedd this to the text, but it works better - Floppian
-transporter.simpleClick(viewCorrectAnswer)
+    let viewCorrectAnswer = document.querySelector("#root > div > div > div > div > div > div:nth-child(2) > span:nth-child(1) > div")
+    transporter.simpleClick(viewCorrectAnswer)
     await sleep(400)
     let correctAnswer = document.querySelector("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div > div > div:nth-child(3)").innerText
     results[questionName] = correctAnswer
-    transporter.simpleClick(document.querySelector("span>div>div>div>div")) // Clicks the next button thing
+    //transporter.simpleClick(document.querySelector("span>div>div>div>div")) // Clicks the next button thing
+	  transporter.toQuestion()
   }
   await sleep(400)
 
