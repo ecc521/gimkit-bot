@@ -25,5 +25,3 @@ Gimkit has released a server-side filter that checks how the player answers ques
 <hr>
 
 Again, if anybody is interested in maintaining this project, please send me an email or open up an issue on this repository. All help would be appreciated, since I don't have enough time to work on this.
-
-
