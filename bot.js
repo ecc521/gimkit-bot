@@ -168,6 +168,7 @@ async function answerQuestion() {
 	    transporter.toQuestion()
     }
   } else {
+	  //TODO: View Correct Answer no longer works. 
     let viewCorrectAnswer = document.querySelector("#root > div > div > div > div > div > div:nth-child(2) > span:nth-child(1) > div")
     transporter.simpleClick(viewCorrectAnswer)
     await sleep(400)
