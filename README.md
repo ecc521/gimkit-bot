@@ -18,7 +18,7 @@ For future developers and those interested...
 
 This bot runs a loop that answers questions, and buys upgrades. It starts off by answering questions until it has enough money to buy a upgrade ( which it knows by checking the balance elem ). When that happens - it goes to the store and buys the next thing it needs. All the information on upgrade cost is kept in the script. 
 
-** Obstacles **
+**Obstacles**
 
 Gimkit has released a server-side filter that checks how the player answers questions. The reason its "unavoidable" and how it filters will not be mentioned here, but once a solution is found, please make a PR or contact me, ecc521, in some other way. 
 
