@@ -5,7 +5,7 @@ Cause total havoc on gimkit games by earning FAR too much money - because it's a
 
 
 ## Some Info
-Takes about 2 minutes to max out all upgrades, minus time wasted guessing at answers. Answers about one question per second. PRs that safely reduce pause times are welcomed, but I, ecc521, have limited time to maintain this project.
+Takes about 2 minutes to max out all upgrades, minus time wasted guessing at answers. Answers about one question per second. PRs that safely reduce pause times are welcomed, but I have limited time to maintain this project.
 ### Collaboration 
 **Please**, If anybody is interested in maintaining this project, please send me an email or open up an issue on this repository. All help would be appreciated, since I don't have enough time to work on this.
 
