@@ -67,7 +67,11 @@ transporter.simpleClick = clickElement
 
 
 //TODO: Handle view correct answer setting being off.
+
+//We will remember what the questions were, and what the correct answer to them was. This will mean, that,
+//after we have guessed the correct answer to a question, we won't miss it in the future. 
 let results = {}
+
 const sleep = m => new Promise(r => setTimeout(r, m))
 
 function getMoney() {
@@ -103,6 +107,8 @@ async function answerQuestion() {
   // One of shop and viewCorrectAnswer exist
   if (!lost) {
     //We got the question correct
+	  
+	  //Save the answer to the question. 
     results[questionName] = guessing
 
     let money = getMoney()
@@ -143,7 +149,6 @@ async function answerQuestion() {
     if (shopIndex !== undefined) {
       transporter.toShop()
       //TODO: Add powerups.
-      //This little bit of code does not work yet.
 
       await sleep(400)
 
@@ -168,11 +173,15 @@ async function answerQuestion() {
 	    transporter.toQuestion()
     }
   } else {
-	  //TODO: View Correct Answer no longer works. 
+	  //TODO: View Correct Answer button no longer being clicked. Probably requires the same getEventListeners change. 
+	  
+	  //Click "View Correct Answer"
     let viewCorrectAnswer = document.querySelector("#root > div > div > div > div > div > div:nth-child(2) > span:nth-child(1) > div")
     transporter.simpleClick(viewCorrectAnswer)
     await sleep(400)
+	  //Grab the answer
     let correctAnswer = document.querySelector("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div > div > div:nth-child(3)").innerText
+    //Store the correct answer for later use. 
     results[questionName] = correctAnswer
     //transporter.simpleClick(document.querySelector("span>div>div>div>div")) // Clicks the next button thing
 	  transporter.toQuestion()
