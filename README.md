@@ -1,6 +1,6 @@
 # gimkit-bot
 
-**Note: If anybody is interested in maintaining this project, please send me an email or open up an issue on this repository. I have limited time to maintain what was meant to be a demonstration of inherent flaws in GimKit.**
+**Note: If anybody is interested in maintaining this project, please send me an email or open up an issue on this repository. I have limited time to maintain what was meant to be a demonstration of inherent flaws in GimKit, especially against intentional and targeted attempts to block it. **
 
 Cause total havoc on gimkit games by earning FAR too much money - because it's a bot - not you - answering the questions.
 
