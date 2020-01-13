@@ -23,7 +23,7 @@ This bot runs a loop that answers questions, and buys upgrades. It starts off by
 
 ### Difficulties
 
-Gimkit has released a server-side filter that checks how the player answers questions. The reason its "unavoidable" and how it filters will not be mentioned here, but once a solution is found, please make a PR or contact me, ecc521, in some other way. 
+GimKit is attempting to block this bot from functioning, by changing it's website design and imposing restrictions on the rate of answers. If you have information about, or fixes for such restrictions, please make a PR or open an issue. 
 
 <hr>
 
