@@ -17,9 +17,9 @@
 
 
 
-(function() {
-	let getEventListeners = getEventListeners //For some reason, getEventListeners is not available unless we do this. 
-	console.log(getEventListeners)
+;(function() {
+	let localGetEventListeners = getEventListeners //For some reason, getEventListeners is not available unless we do this. 
+	console.log(localGetEventListeners)
 	
 	
 	//TODO: Dynamically figure out prices, in case they change. 
@@ -91,7 +91,7 @@
 	    }
 	  }
 	  let guessing = elements[index].innerText
-	  getEventListeners(document).click[0].listener({isTrusted: true, target: elements[index], type: "click"})
+	  localGetEventListeners(document).click[0].listener({isTrusted: true, target: elements[index], type: "click"})
 	  console.log(elements)
 	  console.log(index)
 
