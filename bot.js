@@ -1,3 +1,4 @@
+
 //Copy and paste this code into the developer console. Close the console. 
 //Press "s" to start the bot
 //Press "e" to stop the bot.
@@ -101,7 +102,7 @@
 
         await sleep(450)
 
-        let lost = document.querySelector("body > div > div > div:nth-child(3) > div:nth-child(1) > div > div > div").innerText.startsWith("-")
+        let lost = document.querySelector(".fade-router-enter-done .animated.jello").innerText.startsWith("-")
         // One of shop and viewCorrectAnswer exist
         if (!lost) {// Correct
             // Save the answer to the question. 
@@ -167,7 +168,7 @@
             //TODO: View Correct Answer button no longer being clicked. Probably requires the same getEventListeners change. 
 
             //Click "View Correct Answer"
-            let viewCorrectAnswer = document.querySelector("#root > div > div > div > div > div > div:nth-child(2) > span:nth-child(1) > div")
+            let viewCorrectAnswer = document.evaluate("//div[contains(text(),'View Correct Answer')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
             transporter.simpleClick(viewCorrectAnswer)
             await sleep(400)
             //Grab the answer
