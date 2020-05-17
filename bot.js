@@ -109,13 +109,13 @@
 
             let money = getMoney()
             let shopIndex; //Money per question, streak, multiplier, insurance (not useful).
-            let moneyIndex = upgrades.moneyPerQuestion.findIndex((x) => {
+            let moneyIndex = upgradePrices.moneyPerQuestion.findIndex((x) => {
                 return money >= x;
             });
-            let streakIndex = upgrades.streakBonus.findIndex((x) => {
+            let streakIndex = upgradePrices.streakBonus.findIndex((x) => {
                 return money >= x;
             });
-            let multiplierIndex = upgrades.multiplier.findIndex((x) => {
+            let multiplierIndex = upgradePrices.multiplier.findIndex((x) => {
                 return money >= x
             })
             let purchaseIndex
@@ -123,15 +123,15 @@
             if (moneyIndex != -1) {
                 shopIndex = 0;
                 purchaseIndex = moneyIndex;
-                upgrades.moneyPerQuestion[moneyIndex] = undefined;
+                upgradePrices.moneyPerQuestion[moneyIndex] = undefined;
             } else if (streakIndex != -1) {
                 shopIndex = 1;
                 purchaseIndex = streakIndex
-                upgrades.streakBonus[streakIndex] = undefined;
+                upgradePrices.streakBonus[streakIndex] = undefined;
             } else if (multiplierIndex != -1) {
                 shopIndex = 2;
                 purchaseIndex = multiplierIndex;
-                upgrades.multiplier[multiplierIndex] = undefined;
+                upgradePrices.multiplier[multiplierIndex] = undefined;
             }
             console.log(money)
             console.log(shopIndex)
