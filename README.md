@@ -1,4 +1,4 @@
-## This project is currently unmaintained. If you are interested in maintaining it, please see visit the issues panel.
+## This project is currently unmaintained. If you are interested in maintaining it, please visit the issues panel.
 # gimkit-bot
 Cause total havoc on gimkit games by earning FAR too much money - because it's a bot - not you - answering the questions.
 
