@@ -15,7 +15,9 @@ Otherwise, if you have small fixes for bugs, making a simple PR request would be
 
 ### Instructions
 
-Follow the instructions at https://ecc521.github.io/gimkit-bot/bot.js
+To use the bot, copy the code from [https://ecc521.github.io/gimkit-bot/bot.js](https://ecc521.github.io/gimkit-bot/bot.js) and paste it into the chrome developer tools console.
+You should get two window alerts, agree to both of them.
+To use the bot, click the S key to start it, and the E key to stop it.
 The bot uses APIs in Chrome Desktop DevTools. Non-Chrome browsers, and mobile versions of Chrome are NOT supported. 
 
 ## How It Works
