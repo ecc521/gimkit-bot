@@ -1,6 +1,6 @@
 ## This project is currently unmaintained. If you are interested in maintaining it, please visit the issues panel.
 # gimkit-bot
-Cause total havoc on gimkit games by earning FAR too much money - because it's a bot - not you - answering the questions.
+(INSTRUCTIONS FOR USE BELOW) Cause total havoc on gimkit games by earning FAR too much money - because it's a bot - not you - answering the questions.
 
 ![too rich.png](https://ecc521.github.io/gimkit-bot/too%20rich.png "I'm way too rich")
 
@@ -19,6 +19,9 @@ To use the bot, copy the code from [https://ecc521.github.io/gimkit-bot/bot.js](
 You should get two window alerts, agree to both of them.
 To use the bot, click the S key to start it, and the E key to stop it.
 The bot uses APIs in Chrome Desktop DevTools. Non-Chrome browsers, and mobile versions of Chrome are NOT supported. 
+
+If you are unable to use the chrome developer console:
+You can paste code into a bookmarklet to run the script. To make a bookmarklet for the bot, copy the code from the bookmarklet.js file, which you can find above, into a bookmark and save it as "Gimkit Bot" or whatever else you may wish. Then, when you are in the gimkit game you can click on the bookmark to run it. 
 
 ## How It Works
 For future developers and those interested...
