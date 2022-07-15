@@ -1,3 +1,5 @@
+
+
 //note script may not perform well on kits with 50+ questions
 var safeMode = true;
 var map1;
@@ -162,10 +164,11 @@ var answersMap = map1 //ultimate map for stories questions to answers
     var newArr = document.querySelectorAll('span')
 
     var ans = newArr[4].textContent
+    var conti = newArr[5]
     console.log(ans)
 
      if ((ans.includes("Close") || ans.includes("Mission") || ans.includes("Shop")) && answersMap.has(tQuestion)) {
-         document.dispatchEvent(new KeyboardEvent('keydown', {'keyCode': '13'}));
+         pressOnPos(getOffset(conti)[0], getOffset(conti)[1])
          if (running == true) {
              setTimeout(function() {
                  determineKeyPress()
@@ -178,7 +181,7 @@ var answersMap = map1 //ultimate map for stories questions to answers
     if ((ans.includes("Close") || ans.includes("Mission") || ans.includes("Shop")) && !answersMap.has(tQuestion)) {
         console.log('found corret one')
         answersMap.set(tQuestion, selected)
-        document.dispatchEvent(new KeyboardEvent('keydown', {'keyCode': '13'}));
+        pressOnPos(getOffset(conti)[0], getOffset(conti)[1])
         if (running == true) {
             saveAnswers()
             setTimeout(function() {
@@ -193,7 +196,7 @@ var answersMap = map1 //ultimate map for stories questions to answers
         }
         console.log("psuhed")
         blacklist.get(tQuestion).push(selected)
-        document.dispatchEvent(new KeyboardEvent('keydown', {'keyCode': '13'}));
+        pressOnPos(getOffset(conti)[0], getOffset(conti)[1])
         if (running == true) {
             setTimeout(function() {
                 determineKeyPress()
@@ -289,8 +292,9 @@ keepAlive()
 
 function timeOut() {
     if (safeMode == true) {
-        return 220;
+        return 210;
     } else {
-        return 50;
+        return 30;
     }
 }
+
