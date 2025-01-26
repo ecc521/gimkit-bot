@@ -1,4 +1,9 @@
-## This project is currently unmaintained. If you are interested in maintaining it, please visit the issues panel.
+## This project is currently unmaintained and I have no intention to maintain it in the future. 
+
+## All code from ecc521 can be used unrestricted (https://creativecommons.org/public-domain/cc0/) - Code from other authors still follows the GPL license. 
+
+## If you have an actively working fork / similar project, send me an email and I might link it here. 
+
 # gimkit-bot
 (INSTRUCTIONS FOR USE BELOW) Cause total havoc on gimkit games by earning FAR too much money - because it's a bot - not you - answering the questions.
 
